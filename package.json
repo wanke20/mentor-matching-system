@@ -1,0 +1,25 @@
+{
+  "name": "mentor-matching-system",
+  "version": "1.0.0",
+  "description": "Develops a system that connects participants with experienced  mentors based on their interests and areas of expertise.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanke20/mentor-matching-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanke20/mentor-matching-system/issues"
+  },
+  "homepage": "https://github.com/wanke20/mentor-matching-system#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2"
+  }
+}
