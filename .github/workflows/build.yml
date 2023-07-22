@@ -1,0 +1,17 @@
+name: My First Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Run tests
+        run: |
+          yarn test
