@@ -9,6 +9,24 @@ var Mentor = mongoose.model('Mentor');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res) {
-    res.send('Hello World!');
+app.get('/', async(request, response) => {
+    response.send(await Participant.find()); 
+});
+
+app.put('/', async(request, response) => {
+    Product.findOne({ _id: request.params.id }, (err, product) => {
+        if (err) {
+            response.status(500).send(err);
+        } else {
+            product.name = request.body.name;
+            product.price = request.body.price;
+            product.save((err) => {
+                if (err) {
+                    response.status(500).send(err);
+                } else {
+                    response.send(product);
+                }
+            });
+        }
+    });
 });
