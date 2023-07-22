@@ -1,5 +1,5 @@
 import express from "express";
-let app = express();
+const app = express();
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
