@@ -30,3 +30,7 @@ app.put('/', async(request, response) => {
         }
     });
 });
+
+app.post('/', async(request, response) => {
+    
+});
