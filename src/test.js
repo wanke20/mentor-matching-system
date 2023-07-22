@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+const {test, expect} = require('@jest/globals')
 function add(a, b) {
     return a + b;
 }
