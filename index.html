@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            h2 {
+                text-align: left;
+            };
+        </style>
+    </head>
+    <body>
+        <h1>Mentor Matching System</h1>
+        <h3>List of Participants</h3>
+        <p id="resultField1"></p>
+        <form id="form">
+            <input type="text" id="participantId">
+            <input type="submit" id="enter" value="Enter">
+        </form>
+        <p id="resultField2"></p>
+        <script type="text/javascript" src="src/listener.js"></script>
+        <script>
+            window.onload = function() {
+                getAllElements();
+            }
+        </script>
+    </body>
+</html>

@@ -1,45 +1,61 @@
-import express from "express";
+// this is the main server file for the app
+const express = require("express");
+const cors = require("cors");
+
 const app = express();
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var db = mongoose.connect("mongodb://localhost");
 
-const Participant = mongoose.model("Participant");
-// const Mentor = mongoose.model("Mentor");
+var Participant = require("./participant.js");
+var Mentor = require("./mentor.js");
+const { response } = require("express");
 
+app.use(cors()); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", async (response) => {
-    response.send(await Participant.find());
+app.get('/', async (request, response) => {
+    Participant.find().then((savedUser) => {
+        response.send(savedUser);
+    })
 });
 
-// app.put("/", function (request, response) {
-//     Product.findOne({ _id: request.params.id }, (err, product) => {
-//         if (err) {
-//             response.status(500).send(err);
-//         } else {
-//             product.name = request.body.name;
-//             product.price = request.body.price;
-//             product.save((err) => {
-//                 if (err) {
-//                     response.status(500).send(err);
-//                 } else {
-//                     response.send(product);
-//                 }
-//             });
-//         }
-//     });
-// });
+app.get('/id', async (request, response) => {
+    Participant.findOne({ _id: request.body._id })
+    .then((savedUser) => {
+        response.send(savedUser);
+    })
+    .catch((err) => {
+        response.status(500).send(err);
+    });
+});
 
-// app.post("/", async (request, response) => {
-//     var participant = new Participant();
-//     participant.name = request.body.name;
-//     participant.description = request.body.description;
-//     participant.save((err) => {
-//         if (err) {
-//             response.status(500).send(err);
-//         } else {
-//             response.send(participant);
-//         }
-//     });
-// });
+app.put("/", async (request, response) => {
+    Participant.findOneAndUpdate({ _id: request.body._id }, 
+        request.body, { new: true })
+        .then((savedUser) => {
+            response.send(savedUser);
+        })
+        .catch((err) => {
+            response.status(500).send(err);
+        });
+});
+
+app.post("/", async (request, response) => {
+    var participant = new Participant();
+    participant.name = request.body.name;
+    participant.description = request.body.description;
+    participant
+        .save()
+        .then((savedUser) => {
+            response.send(savedUser);
+        })
+        .catch((err) => {
+            response.status(500).send(err);
+        });
+});
+
+app.listen(3000, function () {
+    console.log("Listening on port 3000");
+});
