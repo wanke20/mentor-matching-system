@@ -15,20 +15,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', async (request, response) => {
+app.get('/', async (_request, response) => {
     Participant.find().then((savedUser) => {
         response.send(savedUser);
     })
-});
-
-app.get('/id', async (request, response) => {
-    Participant.findOne({ _id: request.body._id })
-    .then((savedUser) => {
-        response.send(savedUser);
-    })
-    .catch((err) => {
-        response.status(500).send(err);
-    });
 });
 
 app.put("/", async (request, response) => {
