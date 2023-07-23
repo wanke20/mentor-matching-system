@@ -8,8 +8,6 @@ var mongoose = require("mongoose");
 var db = mongoose.connect("mongodb://localhost");
 
 var Participant = require("./participant.js");
-var Mentor = require("./mentor.js");
-const { response } = require("express");
 
 app.use(cors()); 
 app.use(bodyParser.json());
@@ -21,7 +19,7 @@ app.get('/', async (_request, response) => {
     })
 });
 
-app.put("/", async (request, response) => {
+app.put("/",  (request, response) => {
     Participant.findOneAndUpdate({ _id: request.body._id }, 
         request.body, { new: true })
         .then((savedUser) => {

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
     <body>
         <h1>Mentor Matching System</h1>
         <h3>Search for Participants</h3>
+        <button onclick="location.href = 'preferences.html';" id="preferences">
+            Update User Info
+        </button>
         <p id="resultField1"></p>
-        <form id="form">
-            <input type="text" name="participant" id="key" placeholder="Filter By KeyWord">
+        <form id="form1">
+            <input type="text" id="key" placeholder="Filter By Keyword">
             <input type="submit" value="Submit">
         </form>
         <p id="resultField2"></p>
-        <script type="text/javascript" src="src/listener.js"></script>
+        <script type="text/javascript" src="src/client.js"></script>
         <script>
             window.onload = function() {
                 getAllElements();

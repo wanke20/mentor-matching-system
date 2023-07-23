@@ -1,12 +1,12 @@
 var inputField = document.getElementById("key");
 var resultField1 = document.getElementById("resultField1");
 var resultField2 = document.getElementById("resultField2");
-var form = document.getElementById("form");
+var form1 = document.getElementById("form1");
 
-form.addEventListener("submit", function (event) {
+form1.addEventListener("submit", function (event) {
     var userInput = inputField.value;
     if (userInput.length === 0) {
-        resultField2.innerText = "Please enter a valid response";
+        resultField2.innerText = "Please enter a valid key";
     } else {
         getElementByKeyword(userInput);
     }
