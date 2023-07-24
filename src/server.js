@@ -13,12 +13,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// get request to get all the participants
 app.get('/', async (_request, response) => {
     Participant.find().then((savedUser) => {
         response.send(savedUser);
     })
 });
 
+// put request to update the participant
 app.put("/",  (request, response) => {
     Participant.findOneAndUpdate({ _id: request.body._id }, 
         request.body, { new: true })
@@ -30,6 +32,7 @@ app.put("/",  (request, response) => {
         });
 });
 
+// post request to create a new participant
 app.post("/", async (request, response) => {
     var participant = new Participant();
     participant.name = request.body.name;
